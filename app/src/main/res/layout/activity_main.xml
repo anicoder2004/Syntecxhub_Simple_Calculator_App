@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calculator_bg_light"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Expression Display (Upper Tier) -->
+    <HorizontalScrollView
+        android:id="@+id/expressionDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/currentDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <TextView
+            android:id="@+id/tvExpression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:textColor="@color/text_secondary_light"
+            android:textSize="24sp"
+            tools:text="" />
+    </HorizontalScrollView>
+
+    <!-- Main Input/Result Display (Lower Tier with Horizontal Scrolling) -->
+    <HorizontalScrollView
+        android:id="@+id/currentDisplay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/btnClear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expressionDisplay">
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:text="0"
+            android:textColor="@color/text_secondary_light"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            tools:text="0" />
+    </HorizontalScrollView>
+
+    <!-- Keypad Row 1 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClear"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="AC"
+        android:textColor="@color/btn_special_light"
+        android:textSize="22sp"
+        app:backgroundTint="#FF0000"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn7"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="C"
+        android:textColor="@color/btn_special_light"
+        android:textSize="22sp"
+        app:backgroundTint="#FF0000"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn8"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnPercent"
+        app:layout_constraintStart_toEndOf="@id/btnClear" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPercent"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="%"
+        android:textColor="@color/text_primary_light"
+        android:textSize="24sp"
+        app:backgroundTint="@color/btn_operator_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn9"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnDivide"
+        app:layout_constraintStart_toEndOf="@id/btnBack" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDivide"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="÷"
+        android:textColor="@color/text_primary_light"
+        android:textSize="24sp"
+        app:backgroundTint="@color/btn_operator_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnMultiply"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnPercent" />
+
+    <!-- Keypad Row 2 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="7"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btn8"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="8"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn5"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btn9"
+        app:layout_constraintStart_toEndOf="@id/btn7" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="9"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnMultiply"
+        app:layout_constraintStart_toEndOf="@id/btn8" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMultiply"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="×"
+        android:textColor="@color/text_primary_light"
+        android:textSize="24sp"
+        app:backgroundTint="@color/btn_operator_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnSubtract"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn9" />
+
+    <!-- Keypad Row 3 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="4"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btn5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="5"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btn6"
+        app:layout_constraintStart_toEndOf="@id/btn4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="6"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn3"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnSubtract"
+        app:layout_constraintStart_toEndOf="@id/btn5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubtract"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="−"
+        android:textColor="@color/text_primary_light"
+        android:textSize="24sp"
+        app:backgroundTint="@color/btn_operator_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn6" />
+
+    <!-- Keypad Row 4 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="1"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn0"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btn2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="2"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn0"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btn3"
+        app:layout_constraintStart_toEndOf="@id/btn1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="3"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnDot"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnAdd"
+        app:layout_constraintStart_toEndOf="@id/btn2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAdd"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="+"
+        android:textColor="@color/text_primary_light"
+        android:textSize="24sp"
+        app:backgroundTint="@color/btn_operator_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnEquals"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn3" />
+
+    <!-- Keypad Row 5 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="0"
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnDot"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDot"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="."
+        android:textColor="@color/text_primary_light"
+        android:textSize="22sp"
+        app:backgroundTint="@color/btn_number_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnEquals"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/btn0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEquals"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:text="="
+        android:textColor="@color/text_primary_light"
+        android:textSize="24sp"
+        app:backgroundTint="@color/btn_equals_light"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/btnDot" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
